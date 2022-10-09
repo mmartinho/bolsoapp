@@ -1,0 +1,6 @@
+<p>Clique no nome de usuário abaixo para acessar suas fotos:</p>
+<ul>
+    <li *ngFor="let user of users">
+       <a [routerLink]="['/user/'+user.user_name]">{{ user.user_name }}</a> 
+    </li>
+</ul>

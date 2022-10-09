@@ -1,0 +1,41 @@
+<div class="bg-white border" *ngIf="(photoObservable | async) as photo">
+    <div class="row">
+      <div class="col-lg-8">
+        <ap-photo [url]="photo.url" [description]="photo.description"></ap-photo>
+      </div>
+      <div class="col-lg-4 p-4">
+        <small>
+          <p class="text-left break-word">{{ photo.description }}</p>
+          <div class="text-left mb-4">
+            <span showIfLogged>
+              <fa-icon 
+                (click)="like(photo)"
+                class="fa-2x mr-2 ml-2"
+                aria-hidden="true" 
+                ngbTooltip="Click if you liked this photo" 
+                placement="right" 
+                [icon]="faHeart"></fa-icon>{{ photo.likes }}
+            </span>  
+            <fa-icon 
+              class="fa-2x mr-2 ml-2"
+              aria-hidden="true" 
+              ngbTooltip="" 
+              placement="right" 
+              [icon]="faComment"></fa-icon>{{ photo.comments }}
+            <fa-icon 
+              photoOwnerOnly [ownedPhoto]="photo"
+              class="fa-2x pull-right"
+              aria-hidden="true" 
+              ngbTooltip="" 
+              placement="right" 
+              [icon]="faTrash" (click)="remove()"></fa-icon>
+          </div>          
+          <hr>
+        </small>
+        <ap-photo-comments *ngIf="photo.allowComments; else warningTemplate" [photoId]="photoId"></ap-photo-comments>
+        <ng-template #warningTemplate>
+          <p>User has disabled comments for this photo</p>
+        </ng-template>
+    </div>
+  </div>
+</div>

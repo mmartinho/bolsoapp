@@ -1,0 +1,22 @@
+<div [class]="{ 'active-menu' : isShown }">
+    <div class="menu-bar">
+        <!-- 
+            Ícone de FECHAR o menu com algumas funcionalidades de 
+            acessibilidade (teclado): 
+            - tabindex
+            - keyup
+        -->        
+        <fa-icon
+            tabindex="0" 
+            (keyup.space)="toggle()"          
+            aria-hidden="true" 
+            [icon]="faWindowClose" 
+            class="fa fa-bars mr-2" 
+            (click)="toggle()">
+        </fa-icon>
+
+        <ng-content></ng-content>
+        
+        <div class="overlay" (click)="toggle()"></div>
+    </div>
+</div>

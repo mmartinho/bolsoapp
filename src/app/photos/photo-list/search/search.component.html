@@ -1,0 +1,17 @@
+<div class="text-center mt-3 mb-3">
+    <form>
+        <fa-icon 
+            aria-hidden="true" 
+            ngbTooltip="Type the keyword in field" 
+            placement="right" 
+            [icon]="faSearch"></fa-icon>
+        <input #search
+            class="rounded" 
+            type="search" 
+            placeholder="search..." 
+            autofocus
+            (keyup)="debounce.next(search.value)"
+            [value]="searchValue"
+        >
+    </form>
+</div>

@@ -1,0 +1,50 @@
+<header class="fixed-top">
+    <nav class="navbar navbar-light bg-white">
+        <a class="navbar-brand">
+            <!-- 
+                Ícone de abrir o menu com algumas funcionalidades de 
+                acessibilidade (teclado): 
+                - tabindex
+                - keyup
+            -->
+            <fa-icon 
+                tabindex="0" 
+                (keyup.space)="menu.toggle()" 
+                (click)="menu.toggle()" 
+                aria-hidden="true" [icon]="faBars" class="fa fa-bars mr-2">
+            </fa-icon>
+            ALURAPIC
+        </a>
+
+        <!-- 
+            Componente "Menu" identificado para que o próprio 
+            template tenha acesso a ele 
+        -->
+        <ap-menu #menu>
+            <ul class="list-unstyled">
+                <li><a showIfLogged [routerLink]="['p','add']">Upload</a></li>
+                <li><a [routerLink]="['bolsonaro','quemsou']">Quem Sou</a></li>
+            </ul>
+        </ap-menu>
+
+        <div *ngIf="userName; else login">
+            <fa-icon 
+                aria-hidden="true" 
+                [icon]="faUser"></fa-icon>
+            <a style="padding-left: 5px;">{{ userName }}</a>
+            <a style="padding-left: 5px;" (click)="logout()">(Logout)</a>
+        </div>
+        <ng-template #login>
+            <span class="navbar-text">
+                Please, <a [routerLink]="['']">login!</a> 
+            </span>
+        </ng-template>
+        <span class="navbar-text">
+            Or, <a [routerLink]="['home','signup']">signup</a>
+        </span>
+    </nav>
+    <div class="fixed-top">
+        <ap-loading></ap-loading>
+        <ap-alert></ap-alert>
+    </div>
+</header>

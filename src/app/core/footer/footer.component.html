@@ -1,0 +1,18 @@
+<footer class="mt-5" *ngIf="!(user.id == 0)">
+    <div class="fixed-bottom bg-white p-1">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-6">
+                    <a [routerLink]="['']">
+                        <fa-icon aria-hidden="true" [icon]="faHome" class="fa-2x"></fa-icon>
+                    </a>
+                </div>
+                <div class="col-6">
+                    <a [routerLink]="['p', 'add']">
+                        <fa-icon aria-hidden="true" [icon]="faPlusCircle" class="fa-2x"></fa-icon>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
