@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CloudinaryModule } from '@cloudinary/ng';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 
 import { EusouComponent } from './eusou/eusou.component';
 import { QuemsouComponent } from './quemsou/quemsou.component';
@@ -18,7 +20,9 @@ import { VmessageModule } from '../shared/components/vmessage/vmessage.module';
     RouterModule,
     ReactiveFormsModule,
     VmessageModule,
-    CloudinaryModule
+    CloudinaryModule,
+    ShareButtonsModule,
+    ShareIconsModule,
   ]
 })
 export class BolsoModule { }

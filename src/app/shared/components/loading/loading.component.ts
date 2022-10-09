@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { LoadingType } from './loading-type';
 import { LoadingService } from './loading.service';
 
 @Component({

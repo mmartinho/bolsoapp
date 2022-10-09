@@ -13,7 +13,7 @@
                 (click)="menu.toggle()" 
                 aria-hidden="true" [icon]="faBars" class="fa fa-bars mr-2">
             </fa-icon>
-            ALURAPIC
+            BOLSONARO 22
         </a>
 
         <!-- 
@@ -22,29 +22,13 @@
         -->
         <ap-menu #menu>
             <ul class="list-unstyled">
-                <li><a showIfLogged [routerLink]="['p','add']">Upload</a></li>
                 <li><a [routerLink]="['bolsonaro','quemsou']">Quem Sou</a></li>
+                <li><a [routerLink]="['bolsonaro','eusou']">Eu Sou</a></li>
             </ul>
         </ap-menu>
-
-        <div *ngIf="userName; else login">
-            <fa-icon 
-                aria-hidden="true" 
-                [icon]="faUser"></fa-icon>
-            <a style="padding-left: 5px;">{{ userName }}</a>
-            <a style="padding-left: 5px;" (click)="logout()">(Logout)</a>
-        </div>
-        <ng-template #login>
-            <span class="navbar-text">
-                Please, <a [routerLink]="['']">login!</a> 
-            </span>
-        </ng-template>
-        <span class="navbar-text">
-            Or, <a [routerLink]="['home','signup']">signup</a>
-        </span>
     </nav>
     <div class="fixed-top">
-        <ap-loading></ap-loading>
+       <ap-loading></ap-loading>
         <ap-alert></ap-alert>
     </div>
 </header>
