@@ -1,0 +1,29 @@
+******************************************************** 
+AVA: cursos.alura.com.br
+Formação: Angular
+Curso: Todos
+Descrição: Exercícios de Angular
+Data Início: 07/10/2022
+********************************************************
+
+1. Primeiramente, criamos o repositório remoto no github.com (mmartinho/bolsoapp)
+   @see https://github.com/new
+
+2. Criamos o repositório local, apontando-o para o remoto, e enviando-o para o github.com:
+    >git init
+    >git add .
+    >git commit -am "Consolidação Inicial"
+    >git branch -M master
+    >git remote add origin git@github.com:mmartinho/bolsoapp.git 
+    >git push -u origin master
+
+3. Adicionamos o angular-cli-ghpages, que instala a lib e configura o "angular.json":
+    >ng add angular-cli-ghpages
+
+4. Compilamos e Enviamos
+    >ng deploy --base-href=bolsoapp
+
+5. Criamos a github page:
+   @see https://github.com/mmartinho/bolsoapp/settings/pages
+
+   Configurando como fonte o "Deploy from branch", selecionando o branch "gh-pages"
