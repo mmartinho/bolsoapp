@@ -5,6 +5,7 @@
             <img class="img-thumbnail" [src]="imgSrc" alt="Imagem sem o nome">
         </ng-template>
     </div>
+    <button class="btn btn-primary" (click)="downloadImg()">Download</button>
     <share-buttons theme="circles-dark"
         [include]="['copy', 'facebook', 'messenger', 'telegram', 'whatsapp', 'twitter', 'tumblr']"
         [showIcon]="true"

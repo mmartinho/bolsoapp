@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { saveAs } from 'file-saver';
+
 import { Cloudinary } from '@cloudinary/url-gen';
 import { source } from '@cloudinary/url-gen/actions/overlay';
 import { CloudinaryImage } from '@cloudinary/url-gen/assets/CloudinaryImage';
 import { Router } from '@angular/router';
 import { responsive } from "@cloudinary/ng";
-
 import { text } from "@cloudinary/url-gen/qualifiers/source";
 import { Position } from "@cloudinary/url-gen/qualifiers/position";
 import { TextStyle } from "@cloudinary/url-gen/qualifiers/textStyle";
@@ -64,18 +65,23 @@ export class EusouComponent implements OnInit {
     }
   }
 
+  downloadImg(){
+    saveAs(this.imgSrc, 'eusoubolso.jpg');
+  }  
+
   ngOnInit(): void {
     this.quemsouService.getQuemsou().subscribe({
       next: (eu: Quemsou) => { 
         this.nome = this.myName(eu.meunome);
         if(this.nome) {
-          this.setImage(this.nome.toUpperCase());
+            this.setImage(this.nome.toUpperCase());
+          //this.imgSrc = 'assets/img/eusoubolso.jpg'; 
         } else {
           this.router.navigate(['']);
         }      
       },
       error: (err : any) => {
-        this.alertService.warning('Não foi possível pegar o seu nome', true);  
+        this.alertService.warning('Não foi possível pegar o seu nome. ', true);  
       }
     });
   }
