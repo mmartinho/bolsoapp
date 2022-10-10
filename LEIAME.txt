@@ -21,7 +21,7 @@ Data Início: 07/10/2022
     >ng add angular-cli-ghpages
 
 4. Compilamos e Enviamos
-    >ng deploy --base-href=bolsoapp
+    >ng deploy --base-href=https://mmartinho.github.io/bolsoapp/
 
 5. Criamos a github page:
    @see https://github.com/mmartinho/bolsoapp/settings/pages
