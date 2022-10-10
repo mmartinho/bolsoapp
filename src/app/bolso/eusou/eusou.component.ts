@@ -27,6 +27,7 @@ export class EusouComponent implements OnInit {
   nome: string = '';
   img: CloudinaryImage | null = null;
   imgSrc : string = '';
+  imgAlt : string = '';
   responsive = [responsive({steps: [25, 50, 100, 200, 300, 400, 500, 600, 700]})];
   
   constructor(
@@ -74,7 +75,10 @@ export class EusouComponent implements OnInit {
       next: (eu: Quemsou) => { 
         this.nome = this.myName(eu.meunome);
         if(this.nome) {
-            this.setImage(this.nome.toUpperCase());
+          const nome = this.nome.toUpperCase();
+          const first = nome.split(' ').shift()?.toString();
+          this.setImage(first ? first : '');
+          this.imgAlt = `Sou eu, ${first} apoiando Bolsonaro`;  
           //this.imgSrc = 'assets/img/eusoubolso.jpg'; 
         } else {
           this.router.navigate(['']);

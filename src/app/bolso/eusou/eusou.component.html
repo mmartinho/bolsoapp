@@ -2,7 +2,7 @@
     <div class="card-block text-justify">
         <div *ngIf="img != null; else imgNormal"><advanced-image [cldImg]="img" [plugins]="responsive"></advanced-image></div>
         <ng-template #imgNormal>
-            <img class="img-thumbnail" [src]="imgSrc" alt="Imagem sem o nome">
+            <img class="img-thumbnail" [src]="imgSrc" [alt]="imgAlt" [title]="imgAlt">
         </ng-template>
     </div>
     <button class="btn btn-primary" (click)="downloadImg()">Download</button>
