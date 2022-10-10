@@ -1,13 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { source } from '@cloudinary/url-gen/actions/overlay';
 import { CloudinaryImage } from '@cloudinary/url-gen/assets/CloudinaryImage';
 import { Router } from '@angular/router';
+import { responsive } from "@cloudinary/ng";
 
-import {text} from "@cloudinary/url-gen/qualifiers/source";
-import {Position} from "@cloudinary/url-gen/qualifiers/position";
-import {TextStyle} from "@cloudinary/url-gen/qualifiers/textStyle";
-import {compass} from "@cloudinary/url-gen/qualifiers/gravity";
+import { text } from "@cloudinary/url-gen/qualifiers/source";
+import { Position } from "@cloudinary/url-gen/qualifiers/position";
+import { TextStyle } from "@cloudinary/url-gen/qualifiers/textStyle";
+import { compass } from "@cloudinary/url-gen/qualifiers/gravity";
 
 import { environment } from '../../../environments/environment';
 import { AlertService } from '../../shared/components/alert/alert.service';
@@ -23,8 +24,9 @@ import { LocalStorageService } from '../../shared/services/local-storage/local-s
 export class EusouComponent implements OnInit {
 
   nome: string = '';
-  img!: CloudinaryImage;
+  img: CloudinaryImage | null = null;
   imgSrc : string = '';
+  responsive = [responsive({steps: [25, 50, 100, 200, 300, 400, 500, 600, 700]})];
   
   constructor(
     private quemsouService : QuemsouService, 
@@ -34,16 +36,22 @@ export class EusouComponent implements OnInit {
   ) { }
 
   setImage(texto: string) {
-    const cld = new Cloudinary({cloud: { cloudName: environment.cloudinaryName }});
-    this.img = cld.image('eusoubolso_xwblrb');
-    this.img.overlay(   
-      source(
-        text(texto, new TextStyle('arial',70))
-        .textColor('white')      
-      )
-      .position(new Position().gravity(compass('north')).offsetY(280).offsetX(-180))
-    ); 
-    this.imgSrc = this.img.toURL();
+    try {
+      const cld = new Cloudinary({cloud: { cloudName: environment.cloudinaryName }});
+      this.img = cld.image('eusoubolso_xwblrb');
+      this.img.overlay(   
+        source(
+          text(texto, new TextStyle('arial',70))
+          .textColor('white')      
+        )
+        .position(new Position().gravity(compass('north')).offsetY(280).offsetX(-180))
+      ); 
+      
+      this.imgSrc = this.img.toURL();      
+    } catch (error) {
+      this.img = null;
+      this.imgSrc = 'assets/img/eusoubolso.jpg';
+    }
   }
 
   myName(name : string | null | undefined): string {

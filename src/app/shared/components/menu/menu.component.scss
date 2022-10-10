@@ -1,13 +1,13 @@
 .menu-bar {
     position: fixed;
     height: 100%;
-    width: 90%;
-    max-width: 320px;
+    width: 70%;
+    max-width: 200px;
     margin: 0;
     padding: 1em;
     background: #f0f0f0;
     top: 0;
-    left: -90%;
+    left: -70%;
     transition: left 0.3s ease-out;
 }
 
@@ -18,7 +18,7 @@
 .active-menu .overlay {
     position: fixed;
     top: 0;
-    left: 320px;
+    left: 200px;
     width: 100%;
     right: 0;
     bottom: 0;
